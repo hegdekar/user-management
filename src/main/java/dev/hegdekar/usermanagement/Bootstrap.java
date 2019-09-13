@@ -23,7 +23,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
   public void onApplicationEvent(ContextRefreshedEvent event) {
     createSuperAdmin();
   }
-
+  
   /**
    * Creates the Super user in the database
    */

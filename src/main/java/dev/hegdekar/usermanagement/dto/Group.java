@@ -9,6 +9,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -42,11 +43,14 @@ public class Group {
   @ManyToMany
   private Set<Environment> environments;
 
+  @ManyToMany
+  private Set<User> users;
+
   public Group() {
   }
 
   public Group(Long id, String name, User createdBy, LocalDateTime createdDate, Account account, Set<Role> roles,
-               Set<Environment> environments) {
+               Set<Environment> environments, Set<User> users) {
     this.id = id;
     this.name = name;
     this.createdBy = createdBy;
@@ -54,6 +58,7 @@ public class Group {
     this.account = account;
     this.roles = roles;
     this.environments = environments;
+    this.users = users;
   }
 
   public Long getId() {
@@ -117,5 +122,48 @@ public class Group {
   public Group setEnvironments(Set<Environment> environments) {
     this.environments = environments;
     return this;
+  }
+
+  public Set<User> getUsers() {
+    return users;
+  }
+
+  public Group setUsers(Set<User> users) {
+    this.users = users;
+    return this;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Group group = (Group) o;
+    return id.equals(group.id) &&
+      name.equals(group.name) &&
+      createdBy.equals(group.createdBy) &&
+      createdDate.equals(group.createdDate) &&
+      account.equals(group.account) &&
+      Objects.equals(roles, group.roles) &&
+      Objects.equals(environments, group.environments) &&
+      Objects.equals(users, group.users);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, name, createdBy, createdDate, account, roles, environments, users);
+  }
+
+  @Override
+  public String toString() {
+    return "Group{" +
+      "id=" + id +
+      ", name='" + name + '\'' +
+      ", createdBy=" + createdBy +
+      ", createdDate=" + createdDate +
+      ", account=" + account +
+      ", roles=" + roles +
+      ", environments=" + environments +
+      ", users=" + users +
+      '}';
   }
 }

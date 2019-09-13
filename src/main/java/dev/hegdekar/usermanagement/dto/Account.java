@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * @author Naveenkumar Hegdekar
@@ -125,5 +126,39 @@ public class Account {
   public Account setActive(boolean active) {
     isActive = active;
     return this;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Account account = (Account) o;
+    return isDeleted == account.isDeleted &&
+      isActive == account.isActive &&
+      id.equals(account.id) &&
+      name.equals(account.name) &&
+      createdBy.equals(account.createdBy) &&
+      accountOwnerEmail.equals(account.accountOwnerEmail) &&
+      accountOwnerName.equals(account.accountOwnerName) &&
+      createdDate.equals(account.createdDate);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, name, createdBy, accountOwnerEmail, accountOwnerName, createdDate, isDeleted, isActive);
+  }
+
+  @Override
+  public String toString() {
+    return "Account{" +
+      "id=" + id +
+      ", name='" + name + '\'' +
+      ", createdBy=" + createdBy +
+      ", accountOwnerEmail='" + accountOwnerEmail + '\'' +
+      ", accountOwnerName='" + accountOwnerName + '\'' +
+      ", createdDate=" + createdDate +
+      ", isDeleted=" + isDeleted +
+      ", isActive=" + isActive +
+      '}';
   }
 }

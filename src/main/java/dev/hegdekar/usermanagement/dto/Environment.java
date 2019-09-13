@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -86,5 +87,33 @@ public class Environment {
   public Environment setCapabilities(Set<Capability> capabilities) {
     this.capabilities = capabilities;
     return this;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Environment that = (Environment) o;
+    return id.equals(that.id) &&
+      name.equals(that.name) &&
+      url.equals(that.url) &&
+      account.equals(that.account) &&
+      Objects.equals(capabilities, that.capabilities);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, name, url, account, capabilities);
+  }
+
+  @Override
+  public String toString() {
+    return "Environment{" +
+      "id=" + id +
+      ", name='" + name + '\'' +
+      ", url='" + url + '\'' +
+      ", account=" + account +
+      ", capabilities=" + capabilities +
+      '}';
   }
 }

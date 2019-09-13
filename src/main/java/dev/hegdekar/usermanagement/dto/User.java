@@ -9,6 +9,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -218,5 +219,45 @@ public class User {
   public User setHasLoggedIn(boolean hasLoggedIn) {
     this.hasLoggedIn = hasLoggedIn;
     return this;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    User user = (User) o;
+    return isActive == user.isActive &&
+      hasLoggedIn == user.hasLoggedIn &&
+      id.equals(user.id) &&
+      username.equals(user.username) &&
+      firstName.equals(user.firstName) &&
+      email.equals(user.email) &&
+      password.equals(user.password);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, username, firstName, email, password, isActive, hasLoggedIn);
+  }
+
+  @Override
+  public String toString() {
+    return "User{" +
+      "id=" + id +
+      ", username='" + username + '\'' +
+      ", firstName='" + firstName + '\'' +
+      ", middleName='" + middleName + '\'' +
+      ", lastName='" + lastName + '\'' +
+      ", email='" + email + '\'' +
+      ", password='" + password + '\'' +
+      ", account=" + account +
+      ", roles=" + roles +
+      ", environments=" + environments +
+      ", defaultEnvironment=" + defaultEnvironment +
+      ", otp='" + otp + '\'' +
+      ", otpGenerationTime=" + otpGenerationTime +
+      ", isActive=" + isActive +
+      ", hasLoggedIn=" + hasLoggedIn +
+      '}';
   }
 }
