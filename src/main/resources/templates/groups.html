@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Groups</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
+</head>
+<body>
+<div class="container-fluid">
+  <div class="col-md col-lg" ></div>
+  <div class="col-md col-lg">
+    <h1 class="text-center text-primary">Groups List</h1>
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Group Name</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Account</th>
+      </tr>
+      </thead>
+      <tbody class="table-striped">
+      <tr  th:each="group : ${groups}">
+        <td scope="row" th:text="${group.id}"></td>
+        <td th:text="${group.name}"></td>
+        <td th:text="${group.user.firstName}+' '+${group.user.lastName}"></td>
+        <td th:text="${group.account.name}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md col-lg"></div>
+</div>
+</body>
+</html>

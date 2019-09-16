@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 /**
  * @author Naveenkumar Hegdekar
  */
-public interface EnvironmentRepository extends CrudRepository<Environment,Long> {
+public interface EnvironmentRepository extends CrudRepository<Environment, Long> {
 }

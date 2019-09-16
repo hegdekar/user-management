@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 /**
  * @author Naveenkumar Hegdekar
  */
-public interface CapabilityRepository extends CrudRepository<Capability,Long> {
+public interface CapabilityRepository extends CrudRepository<Capability, Long> {
 }

@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 /**
  * @author Naveenkumar Hegdekar
  */
-public interface GroupRepository extends CrudRepository<Group,Long> {
+public interface GroupRepository extends CrudRepository<Group, Long> {
 }

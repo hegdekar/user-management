@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 /**
  * @author Naveenkumar Hegdekar
  */
-public interface AccountRepository extends CrudRepository<Account,Long> {
+public interface AccountRepository extends CrudRepository<Account, Long> {
 }
